@@ -1,3 +1,94 @@
-/* body {
-    background: cyan;
-} */
+:root {
+  /* Dark Mode Colors */
+  --dm-dark-blue: hsl(209, 23%, 22%);
+  --dm-very-dark-blue: hsl(207, 26%, 17%);
+
+  /* Light Mode Colors */
+  --lm-very-dark-blue: hsl(200, 15%, 8%);
+  --lm-dark-gray: hsl(0, 0%, 52%);
+  --lm-very-light-gray: hsl(0, 0%, 98%);
+
+  /* Light & Dark Mode Colors */
+  --lmdm-white: hsl(0, 0%, 100%);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+input, textarea, select, button {
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  background-color: var(--lm-very-light-gray);
+  color: var(--lm-very-dark-blue);
+}
+
+/*
+============================
+  TYPOGRAPHY
+============================
+*/
+
+h1 {
+  font-size: 18px;
+}
+
+/*
+============================
+  GLOBALS
+============================
+*/
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  /* border: 2px solid; */
+}
+
+.container--2col-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*
+============================
+  HEADER
+============================
+*/
+.header {
+  box-shadow: 0 5px 2px var(--lm-very-light-gray);
+  background-color: var(--lmdm-white);
+}
+
+.header .container {
+  padding: 10px 15px 10px;
+}
+
+.header__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.header__icon p {
+  font-weight: 600;
+}

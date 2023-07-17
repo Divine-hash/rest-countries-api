@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"cWZFE":[function(require,module,exports) {
+})({"6BmVF":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "42036d7a98ade5a7";
-module.bundle.HMR_BUNDLE_ID = "73b7b7abe1049cfc";
+module.bundle.HMR_BUNDLE_ID = "3ba86eda4861e05b";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -573,11 +573,142 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"jier7":[function(require,module,exports) {
-const button = document.getElementById("btn");
-button.onclick = function() {
-    window.location.href = "../index.html";
+},{}],"8CyQW":[function(require,module,exports) {
+var _header = require("./modules/header");
+const headerIcon = document.getElementById("header-icon");
+(0, _header.checkStatus)(headerIcon);
+window.addEventListener("storage", ()=>(0, _header.checkStatus)(headerIcon));
+headerIcon.addEventListener("click", ()=>(0, _header.changeStatus)(headerIcon));
+
+},{"./modules/header":"gynUk"}],"gynUk":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "checkStatus", ()=>checkStatus);
+parcelHelpers.export(exports, "changeStatus", ()=>changeStatus);
+const lightModeImgUrl = new URL(require("279b13ba327c6dd8"));
+const darkModeImgUrl = new URL(require("6cfcca2da6f02dbd"));
+const root = document.documentElement;
+var // const darkmodeBg = getComputedStyle(root).getPropertyValue('--lm-very-dark-blue');
+// console.log(darkmodeBg);
+Colors;
+(function(Colors) {
+    Colors["darkmodeBg"] = "#202c37";
+    Colors["lightmodeBg"] = "#fafafa";
+    Colors["darkmodeElem"] = "#2b3945";
+    Colors["lightmodeElem"] = "#ffffff";
+    Colors["darkmodeText"] = "#ffffff";
+    Colors["lightmodeText"] = "#111517";
+})(Colors || (Colors = {}));
+function changeIcon(elem, value) {
+    if (value === "true") {
+        elem.innerHTML = "";
+        elem.insertAdjacentHTML("afterbegin", `<img src=${darkModeImgUrl}/><p>Light Mode</p>`);
+    } else {
+        elem.innerHTML = "";
+        elem.insertAdjacentHTML("afterbegin", `<img src=${lightModeImgUrl}/><p>Dark Mode</p>`);
+    }
+}
+function setLightMode() {
+    root.style.setProperty("--lm-very-light-gray", Colors.lightmodeBg);
+    root.style.setProperty("--lm-very-dark-blue", Colors.lightmodeText);
+    root.style.setProperty("--lmdm-white", Colors.lightmodeElem);
+}
+function setDarkMode() {
+    root.style.setProperty("--lm-very-light-gray", Colors.darkmodeBg);
+    root.style.setProperty("--lm-very-dark-blue", Colors.darkmodeText);
+    root.style.setProperty("--lmdm-white", Colors.darkmodeElem);
+}
+function checkStatus(elem) {
+    if (localStorage.getItem("darkmode") === "false") {
+        setLightMode();
+        changeIcon(elem, "false");
+    } else {
+        setDarkMode();
+        changeIcon(elem, "true");
+    }
+}
+function changeStatus(elem) {
+    if (localStorage.getItem("darkmode") === "false") {
+        localStorage.setItem("darkmode", "true");
+        setDarkMode();
+        changeIcon(elem, "true");
+    } else {
+        localStorage.setItem("darkmode", "false");
+        setLightMode();
+        changeIcon(elem, "false");
+    }
+}
+
+},{"279b13ba327c6dd8":"3haU8","6cfcca2da6f02dbd":"2MhVQ","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"3haU8":[function(require,module,exports) {
+module.exports = require("e6ca9b5dd0c61b59").getBundleURL("57yAg") + "dark-mode.cb922faa.svg" + "?" + Date.now();
+
+},{"e6ca9b5dd0c61b59":"hPpBg"}],"hPpBg":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"2MhVQ":[function(require,module,exports) {
+module.exports = require("9b64bed595b669d6").getBundleURL("57yAg") + "light-mode.0fc70891.svg" + "?" + Date.now();
+
+},{"9b64bed595b669d6":"hPpBg"}],"j7FRh":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
 };
 
-},{}]},["cWZFE","jier7"], "jier7", "parcelRequirec997")
+},{}]},["6BmVF","8CyQW"], "8CyQW", "parcelRequirec997")
 

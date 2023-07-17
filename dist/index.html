@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/index.80dee08a.css">
     <title>Home Page</title>
 </head>
 <body>
-    <h2>Home Page</h2>
-    <img src="/light-mode.0fc70891.svg" alt="">
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero, ab!</p>
-    <button id="btn" type="button">Go to About Page</button>
+    <header class="header">
+        <div class="container container--2col-flex">
+            <h1>Where in the World?</h1>
+            <div id="header-icon" class="header__icon">
+                <img src="/dark-mode.cb922faa.svg" alt="">
+                <p>Dark Mode</p>
+            </div>
+        </div>
+    </header>
+    <button id="btn" type="button" style="margin-top: 100px">About Page</button>
+    <script>btn.onclick = function() {
+    window.location.href = "./details.html";
+};
+
+</script>
     <script src="/index.7155fac2.js" defer=""></script>
 </body>
 </html>

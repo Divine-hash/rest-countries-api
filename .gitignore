@@ -1,3 +1,5 @@
 node_modules
 README.md
 style-guide.md
+.parcel-cache
+style-guide.md

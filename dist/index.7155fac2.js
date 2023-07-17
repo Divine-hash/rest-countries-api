@@ -574,9 +574,140 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"57jqn":[function(require,module,exports) {
-const btn = document.getElementById("btn");
-btn.onclick = function() {
-    window.location.href = "./about/about.html";
+var _header = require("./modules/header");
+if (localStorage.getItem("darkmode") === null) localStorage.setItem("darkmode", "false");
+const headerIcon = document.getElementById("header-icon");
+(0, _header.checkStatus)(headerIcon);
+headerIcon.addEventListener("click", ()=>(0, _header.changeStatus)(headerIcon));
+
+},{"./modules/header":"gynUk"}],"gynUk":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "checkStatus", ()=>checkStatus);
+parcelHelpers.export(exports, "changeStatus", ()=>changeStatus);
+const lightModeImgUrl = new URL(require("279b13ba327c6dd8"));
+const darkModeImgUrl = new URL(require("6cfcca2da6f02dbd"));
+const root = document.documentElement;
+var // const darkmodeBg = getComputedStyle(root).getPropertyValue('--lm-very-dark-blue');
+// console.log(darkmodeBg);
+Colors;
+(function(Colors) {
+    Colors["darkmodeBg"] = "#202c37";
+    Colors["lightmodeBg"] = "#fafafa";
+    Colors["darkmodeElem"] = "#2b3945";
+    Colors["lightmodeElem"] = "#ffffff";
+    Colors["darkmodeText"] = "#ffffff";
+    Colors["lightmodeText"] = "#111517";
+})(Colors || (Colors = {}));
+function changeIcon(elem, value) {
+    if (value === "true") {
+        elem.innerHTML = "";
+        elem.insertAdjacentHTML("afterbegin", `<img src=${darkModeImgUrl}/><p>Light Mode</p>`);
+    } else {
+        elem.innerHTML = "";
+        elem.insertAdjacentHTML("afterbegin", `<img src=${lightModeImgUrl}/><p>Dark Mode</p>`);
+    }
+}
+function setLightMode() {
+    root.style.setProperty("--lm-very-light-gray", Colors.lightmodeBg);
+    root.style.setProperty("--lm-very-dark-blue", Colors.lightmodeText);
+    root.style.setProperty("--lmdm-white", Colors.lightmodeElem);
+}
+function setDarkMode() {
+    root.style.setProperty("--lm-very-light-gray", Colors.darkmodeBg);
+    root.style.setProperty("--lm-very-dark-blue", Colors.darkmodeText);
+    root.style.setProperty("--lmdm-white", Colors.darkmodeElem);
+}
+function checkStatus(elem) {
+    if (localStorage.getItem("darkmode") === "false") {
+        setLightMode();
+        changeIcon(elem, "false");
+    } else {
+        setDarkMode();
+        changeIcon(elem, "true");
+    }
+}
+function changeStatus(elem) {
+    if (localStorage.getItem("darkmode") === "false") {
+        localStorage.setItem("darkmode", "true");
+        setDarkMode();
+        changeIcon(elem, "true");
+    } else {
+        localStorage.setItem("darkmode", "false");
+        setLightMode();
+        changeIcon(elem, "false");
+    }
+}
+
+},{"279b13ba327c6dd8":"kec11","6cfcca2da6f02dbd":"6Ywel","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"kec11":[function(require,module,exports) {
+module.exports = require("bffe0e05b17e96e9").getBundleURL("8HyDi") + "dark-mode.cb922faa.svg" + "?" + Date.now();
+
+},{"bffe0e05b17e96e9":"hPpBg"}],"hPpBg":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"6Ywel":[function(require,module,exports) {
+module.exports = require("c4c0efd1db86b0dd").getBundleURL("8HyDi") + "light-mode.0fc70891.svg" + "?" + Date.now();
+
+},{"c4c0efd1db86b0dd":"hPpBg"}],"j7FRh":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
 };
 
 },{}]},["kbofY","57jqn"], "57jqn", "parcelRequirec997")
